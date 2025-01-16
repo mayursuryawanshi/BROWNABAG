@@ -16,6 +16,11 @@ const FILE_PATH = path.resolve(
 ); // Local file
 const UPLOAD_PATH = "test-image.jpg"; // File path in the repo
 
+console.log(process.env.GITHUB_TOKEN);
+console.log(process.env.GITHUB_USERNAME);
+console.log(process.env.GITHUB_REPO);
+console.log(process.env.GITHUB_BRANCH);
+
 // Function to upload file
 const uploadFileToGitHub = async () => {
   try {
@@ -42,8 +47,11 @@ const uploadFileToGitHub = async () => {
     const response = await axios.put(url, data, { headers });
 
     console.log("File uploaded successfully:", response.data.content.path);
-  } catch (error) {
-    console.error("Failed to upload file:");
+  } catch (error: any) {
+    console.error(
+      "Failed to upload file:",
+      error.response?.data || error.message
+    );
   }
 };
 

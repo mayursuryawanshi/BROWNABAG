@@ -1,0 +1,2 @@
+*.jpg filter=lfs diff=lfs merge=lfs -text
+xampp-osx-8.1.6-0-vm.jpg filter=lfs diff=lfs merge=lfs -text
